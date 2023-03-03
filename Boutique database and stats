@@ -1,0 +1,22 @@
+--Create a Clothing store database.
+
+CREATE TABLE clothing( ID INTEGER PRIMARY KEY, Name TEXT, Price NUMERIC, Quantity INTEGER, Color TEXT, Size TEXT); 
+
+INSERT INTO clothing VALUES(1, "tshirt", 3.99, 15, "green","medium");
+INSERT INTO clothing VALUES(2, "tshirt", 3.99, 20,"red","medium");
+INSERT INTO clothing VALUES(3, "tshirt", 3.99, 10,"blue","large");
+INSERT INTO clothing VALUES(4, "shorts", 6.00, 30,"red","small");
+INSERT INTO clothing VALUES(5, "shorts", 6.00, 18,"black","medium");
+INSERT INTO clothing VALUES(6, "shorts", 6.00, 20,"yellow","large");
+INSERT INTO clothing VALUES(7, "pants", 10.00, 27,"pink","small");
+INSERT INTO clothing VALUES(8, "pants", 10.00, 19,"red","medium");
+INSERT INTO clothing VALUES(9, "pants", 10.00, 30,"black","large");
+INSERT INTO clothing VALUES(10, "sweatpants", 15.00, 26,"grey","small");
+INSERT INTO clothing VALUES(11, "sweatpants", 15.00, 28,"black","medium");
+INSERT INTO clothing VALUES(12, "sweatpants", 15.00, 35,"black","large");
+INSERT INTO clothing VALUES(13, "sweater", 13.00, 19,"red","small");
+INSERT INTO clothing VALUES(14, "sweater", 13.00, 18,"blue","medium");
+INSERT INTO clothing VALUES(15, "sweater", 13.00, 19,"purple","large");
+
+-- Display the database by price and color.
+SELECT SUM(price)FROM clothing GROUP BY color;
