@@ -58,4 +58,42 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
+#Analysis:
+
+#Sort out each individual industry in the list 
+SELECT DISTINCT industry
+FROM fortune_companies;
+
+# Which company had the largest revenue for the year
+SELECT company_name, MAX(revenue)
+FROM fortune_companies;
+
+# Assign all companies that offer health benefits a classification based on their amount of PTO days
+SELECT company_name,
+CASE 
+WHEN paid_time_off_days >= 18 THEN "Generous"
+WHEN paid_time_off_days >= 10 THEN "Considerate"
+WHEN paid_time_off_days <10 THEN "Unfortunate"
+END as "Employee_balance"
+FROM fortune_companies
+WHERE healthcare_benefits = 1
+
+# What companies had a high employee tenure and also provided health benefits and a considerate pto offer
+SELECT company_name,
+CASE 
+WHEN paid_time_off_days >= 18 THEN "Generous"
+WHEN paid_time_off_days >= 10 THEN "Considerate"
+WHEN paid_time_off_days <10 THEN "Unfortunate"
+END as "Employee_balance"
+FROM fortune_companies
+WHERE healthcare_benefits = 1
+AND "Employee_balance" = "Generous"
+AND avg_employee_tenure >= 7
+
+# Which companies have an average amount of pto days that is equal to or greater than 15
+SELECT company_name, AVG(paid_time_off_days) AS avg_pto
+FROM fortune_companies
+GROUP BY company_name
+HAVING avg_pto >= 15
+
 
